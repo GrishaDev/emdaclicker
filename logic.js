@@ -7,6 +7,7 @@ let dpc = 1;
 let days_waited= "You waited "+days+" days for emda";
 let dayspersec = "Days per second: "+dps;
 
+let achs = [false,false,false,false,false,false,false,false];
 let shops = 
 [
     {
@@ -92,17 +93,18 @@ function init()
 function dpser()
 {
 
-        days += dps/100;
-        document.getElementById("score").innerHTML = "You waited "+Math.round(days)+" days for emda";
+    days += dps/100;
+    document.getElementById("score").innerHTML = "You waited "+Math.round(days)+" days for emda";
 
-        for(let i=0; i<shops.length;i++)
+    for(let i=0; i<shops.length;i++)
+    {
+        if(days >= shops[i].price)
         {
-            if(days >= shops[i].price)
-            {
-                document.getElementById(i).disabled = false;
-            }
+            document.getElementById(i).disabled = false;
         }
-       // console.log("adding by timer");
+    }
+
+    achievements();
 }
 
 setInterval(dpser, 10);
@@ -113,6 +115,56 @@ function clicka()
     document.getElementById("score").innerHTML = "You waited "+Math.round(days)+" days for emda";
 }
 
+function achievements()
+{
+
+    console.log(achs[0]);
+
+    if(days >= 3 && !achs[0]) // 100
+    {
+        document.getElementById("ach").innerHTML = "Maybe emda soon..";
+        document.getElementById("deskpic").classList.add('glow1');
+        achs[0] = true;
+        console.log(achs[0]);
+    }
+    else if(days >= 4 && !achs[1]) // 1000
+    {
+        document.getElementById("ach").innerHTML = "One day will be emda.";
+        document.getElementById("deskpic").classList.add('glow2');
+        achs[1] = true
+    }
+    else if(days >= 5 && !achs[2]) // 50000
+    {
+        document.getElementById("ach").innerHTML = "Need to keep going";
+        document.getElementById("deskpic").classList.add('glow3');
+        achs[2] = true
+    }
+    else if(days >= 6) // 2500000
+    {
+        document.getElementById("ach").innerHTML = "Is there even emda?.";
+        document.getElementById("deskpic").classList.add('glow4');
+    }
+    else if(days >= 7) // 100000000
+    {
+        document.getElementById("ach").innerHTML = "Exploring universe to find emda";
+        document.getElementById("deskpic").classList.add('glow5');
+    }
+    else if(days >= 8) // 80000000000
+    {
+        document.getElementById("ach").innerHTML = "Need to buy 'ALOT'";
+        document.getElementById("deskpic").classList.add('glow6');
+    }
+    else if(days >= 9) // 9992090000000
+    {
+        document.getElementById("ach").innerHTML = "INFINITY = EMDA?";
+        document.getElementById("deskpic").classList.add('glow7');
+    }
+    else if(days >= 10) // 34095834895384958998435894359834898534985389454
+    {
+        document.getElementById("ach").innerHTML = "still here?";
+        document.getElementById("deskpic").classList.add('glow8');
+    }
+}
 function buya(i)
 {
     console.log(i);
@@ -129,6 +181,8 @@ function buya(i)
         {
             dpc += Math.round(dps/10);
         }
+
+        document.getElementById("dpc").innerHTML = "Days per click: "+dpc;
 
         shops[i].price = Math.round(shops[i].price * 1.25);
 

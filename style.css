@@ -79,9 +79,9 @@ p
 {
     top: 0px;
     position: absolute;
-    left: 15%;
+    left: 20%;
     height: 100%;
-    width: 85%;
+    width: 80%;
     /* background-color:yellow; */
 }
 
@@ -102,7 +102,16 @@ p
     height: 150px;
     width: 150px;
     transition-duration: 0.3s;
+    top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  border-radius: 50%;
+  /* background-color: #fff; */
+  /* box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0); */
 }
+
 
 .mid:hover
 {
@@ -115,11 +124,102 @@ p
   
 }
 
+.botleft
+{
+    position: absolute;
+    height: 5%;
+    width: 50%;
+    /* background-color:red; */
+    text-align: center;
+    bottom: 10px;
+}
 
+.botright
+{
+    position: absolute;
+    height: 5%;
+    width: 50%;
+    left: 50%;
+    /* background-color:blue;  */
+    text-align: center;
+    bottom: 10px;
+}
 /* .emdadiv
 {
     left: 20%;
 } */
 img{
     cursor: -webkit-grab;
+}
+
+.glow1
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 10px #fff,
+    0 0 100px 20px rgb(255, 235, 145),
+    0 0 140px 30px rgb(255, 123, 0);
+}
+
+.glow2
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 20px #fff,
+    0 0 100px 40px rgb(255, 235, 145),
+    0 0 140px 70px rgb(255, 123, 0);
+}
+
+.glow3
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0);
+}
+
+.glow4
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0);
+}
+
+.glow5
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0);
+}
+
+.glow6
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0);
+}
+
+.glow7
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0);
+}
+
+.glow8
+{
+      background-color: #fff;
+   box-shadow:
+    0 0 60px 30px #fff,
+    0 0 100px 60px rgb(255, 235, 145),
+    0 0 140px 90px rgb(255, 123, 0);
 }
