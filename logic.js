@@ -220,5 +220,5 @@ function beautifydays(days)
     // {
     //     a = "1T";  
     // }
-    // return a.toFixed(0);
+     return a;
 }
