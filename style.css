@@ -7,6 +7,7 @@ p
 {
     font-size: 1.5em;
     color:darkred;
+    z-index: 10;
 }
 
 .divitem
@@ -92,10 +93,12 @@ p
     width: 100%;
     /* background-color:red; */
     text-align: center;
+    z-index: 10;
 }
 
 .mid
 {
+    z-index: 0;
     position: absolute;
     top: 50%;
     left: 43%;
@@ -159,6 +162,7 @@ img{
     0 0 60px 10px #fff,
     0 0 100px 20px rgb(255, 235, 145),
     0 0 140px 30px rgb(255, 123, 0);
+    z-index: 0;
 }
 
 .glow2
@@ -168,6 +172,7 @@ img{
     0 0 60px 20px #fff,
     0 0 100px 40px rgb(255, 235, 145),
     0 0 140px 70px rgb(255, 123, 0);
+    z-index: 0;
 }
 
 .glow3
@@ -177,49 +182,55 @@ img{
     0 0 60px 30px #fff,
     0 0 100px 60px rgb(255, 235, 145),
     0 0 140px 90px rgb(255, 123, 0);
+    z-index: 0;
 }
 
 .glow4
 {
       background-color: #fff;
    box-shadow:
-    0 0 60px 30px #fff,
-    0 0 100px 60px rgb(255, 235, 145),
-    0 0 140px 90px rgb(255, 123, 0);
+    0 0 60px 50px #fff,
+    0 0 100px 90px rgb(255, 235, 145),
+    0 0 140px 135px rgb(255, 123, 0);
+    z-index: 0;
 }
 
 .glow5
 {
       background-color: #fff;
    box-shadow:
-    0 0 60px 30px #fff,
-    0 0 100px 60px rgb(255, 235, 145),
-    0 0 140px 90px rgb(255, 123, 0);
+    0 0 60px 100px #fff,
+    0 0 100px 160px rgb(255, 235, 145),
+    0 0 140px 220px rgb(255, 123, 0);
+    z-index: 0;
 }
 
 .glow6
 {
       background-color: #fff;
    box-shadow:
-    0 0 60px 30px #fff,
-    0 0 100px 60px rgb(255, 235, 145),
-    0 0 140px 90px rgb(255, 123, 0);
+    0 0 60px 120px #fff,
+    0 0 100px 200px rgb(108, 184, 247),
+    0 0 140px 280px rgb(62, 89, 243);
+    z-index: 0;
 }
 
 .glow7
 {
       background-color: #fff;
    box-shadow:
-    0 0 60px 30px #fff,
-    0 0 100px 60px rgb(255, 235, 145),
-    0 0 140px 90px rgb(255, 123, 0);
+    0 0 60px 200px #fff,
+    0 0 100px 260px rgb(184, 217, 245),
+    0 0 140px 360px rgb(128, 144, 248);
+    z-index: 0;
 }
 
 .glow8
 {
       background-color: #fff;
    box-shadow:
-    0 0 60px 30px #fff,
-    0 0 100px 60px rgb(255, 235, 145),
-    0 0 140px 90px rgb(255, 123, 0);
+    0 0 60px 300px #fff,
+    0 0 100px 360px rgb(108, 184, 247),
+    0 0 140px 490px rgb(62, 89, 243);
+    z-index: 0;
 }

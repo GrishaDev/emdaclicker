@@ -7,7 +7,57 @@ let dpc = 1;
 let days_waited= "You waited "+days+" days for emda";
 let dayspersec = "Days per second: "+dps;
 
-let achs = [false,false,false,false,false,false,false,false];
+let achs = 
+[
+    {
+        name: "Maybe emda soon..",
+        price: 100,
+        clas:'glow1',
+        entered: false
+    },
+    {
+        name: "One day will be emda.",
+        price: 1000,
+        clas: 'glow2',
+        entered: false
+    },
+    {
+        name: "Need to keep going..",
+        price: 50000,
+        clas: 'glow3',
+        entered: false
+    },
+    {
+        name: "One day will be emda.",
+        price: 2500000,
+        clas: 'glow4',
+        entered: false
+    },
+    {
+        name: "Exploring universe to find emda",
+        price: 100000000,
+        clas: 'glow5',
+        entered: false
+    },
+    {
+        name: "Need to buy 'ALOT'",
+        price: 80000000000,
+        clas: 'glow6',
+        entered: false
+    },
+    {
+        name: "INFINITY = EMDA?",
+        price: 9992090000000,
+        clas: 'glow7',
+        entered: false
+    },
+    {
+        name: "still here?",
+        price: 340958348953849589984358943598348982,
+        clas: 'glow8',
+        entered: false
+    }
+]   
 let shops = 
 [
     {
@@ -94,7 +144,10 @@ function dpser()
 {
 
     days += dps/100;
-    document.getElementById("score").innerHTML = "You waited "+Math.round(days)+" days for emda";
+
+    let actualdays = beautifydays(days);
+
+    document.getElementById("score").innerHTML = "You waited "+actualdays+" days for emda";
 
     for(let i=0; i<shops.length;i++)
     {
@@ -118,51 +171,16 @@ function clicka()
 function achievements()
 {
 
-    console.log(achs[0]);
+    //console.log(achs[0]);
 
-    if(days >= 3 && !achs[0]) // 100
+    for(let i=0; i < achs.length; i++)
     {
-        document.getElementById("ach").innerHTML = "Maybe emda soon..";
-        document.getElementById("deskpic").classList.add('glow1');
-        achs[0] = true;
-        console.log(achs[0]);
-    }
-    else if(days >= 4 && !achs[1]) // 1000
-    {
-        document.getElementById("ach").innerHTML = "One day will be emda.";
-        document.getElementById("deskpic").classList.add('glow2');
-        achs[1] = true
-    }
-    else if(days >= 5 && !achs[2]) // 50000
-    {
-        document.getElementById("ach").innerHTML = "Need to keep going";
-        document.getElementById("deskpic").classList.add('glow3');
-        achs[2] = true
-    }
-    else if(days >= 6) // 2500000
-    {
-        document.getElementById("ach").innerHTML = "Is there even emda?.";
-        document.getElementById("deskpic").classList.add('glow4');
-    }
-    else if(days >= 7) // 100000000
-    {
-        document.getElementById("ach").innerHTML = "Exploring universe to find emda";
-        document.getElementById("deskpic").classList.add('glow5');
-    }
-    else if(days >= 8) // 80000000000
-    {
-        document.getElementById("ach").innerHTML = "Need to buy 'ALOT'";
-        document.getElementById("deskpic").classList.add('glow6');
-    }
-    else if(days >= 9) // 9992090000000
-    {
-        document.getElementById("ach").innerHTML = "INFINITY = EMDA?";
-        document.getElementById("deskpic").classList.add('glow7');
-    }
-    else if(days >= 10) // 34095834895384958998435894359834898534985389454
-    {
-        document.getElementById("ach").innerHTML = "still here?";
-        document.getElementById("deskpic").classList.add('glow8');
+        if(days >= achs[i].price && !achs[i].entered)
+        {
+            document.getElementById("ach").innerHTML = achs[i].name;
+            document.getElementById("deskpic").classList.add(achs[i].clas);
+            achs[i].entered = true;
+        }
     }
 }
 function buya(i)
@@ -192,4 +210,15 @@ function buya(i)
         }
         init();
     }
+}
+
+function beautifydays(days)
+{
+    let a = Math.round(days);
+
+    // if(a >=  1000000000000)
+    // {
+    //     a = "1T";  
+    // }
+    // return a.toFixed(0);
 }
