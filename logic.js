@@ -1,4 +1,4 @@
-
+// import { nums, achs, shops } from './config.js';
 
 let days=0;
 let dps = 0;
@@ -246,54 +246,65 @@ function buya(i)
 
 function beautifydays(days)
 {
-    let a = Math.round(days).toString();
-    let b=a.toString();
+    let daystxt = scientificToDecimal(Math.round(days)).toString();
+    let txt = daystxt.toString();
 
-    let lenn = nums.length;
+    //let lenn = nums.length;
 
-    for(let x=0; x<nums.length; x++)
+    for(let i=0; i<nums.length; i++)
     {
-        if(a.length >= nums[x].num && a.length <= nums[x].num+2)
+        let numsize = nums[i].num;
+        let numsizeoffset = (nums[i].num)+2;
+        let position = 2 - (numsizeoffset - daystxt.length);
+        let symbol = nums[i].symbol;
+
+        if(daystxt.length >= numsize && daystxt.length <= numsizeoffset)
         {
-         //   console.log(a.length);
-            b = calculatedays(nums[x].num-2,a.length,a,x);
+           // console.log(daystxt);
+            txt = calculatedays(daystxt,position,symbol,4,true)
         }
-        else if(a.length >= nums[nums.length-1].num)
+        else if(daystxt.length >= nums[nums.length-1].num)
         {
-            b = calculatedays(nums[x].num-2,a.length,a,x);
+            txt = calculatedays(daystxt,position,symbol,(daystxt.length-numsize)+1,false);
         }
     }
-
-     return b;
+     return txt;
 }
 
-function calculatedays(num,len,a,x)
+function calculatedays(daystxt,position,symbol,len,need)
 {
-    b='';
+    let str='';
 
-    let offset = num - a.length;
-
-    // for(let j=0;j <4; j++)
-    // {
-    //     if
-    // }
-    let val=0;
-
-    if(offset == 2)
-        val = 0;
-    else if(offset == 1)
-        val = 1;
-    else
-        val=2;
-
-    for(let i=0; i<4; i++)
+    for(let i=0; i<len; i++)
     {
-        if(i==val)
-            b += a[i].toString()+'.';
+        if(i==position && need)
+            str += daystxt[i].toString()+'.';
         else
-            b += a[i].toString();
+            str += daystxt[i].toString();
     }
-    b+=nums[x].symbol;
+    str+=symbol;
 
-    return b;
+    return str;
 }
+
+function scientificToDecimal(num) {
+    //if the number is in scientific notation remove it
+    if(/\d+\.?\d*e[\+\-]*\d+/i.test(num)) {
+        var zero = '0',
+            parts = String(num).toLowerCase().split('e'), //split into coeff and exponent
+            e = parts.pop(),//store the exponential part
+            l = Math.abs(e), //get the number of zeros
+            sign = e/l,
+            coeff_array = parts[0].split('.');
+        if(sign === -1) {
+            num = zero + '.' + new Array(l).join(zero) + coeff_array.join('');
+        }
+        else {
+            var dec = coeff_array[1];
+            if(dec) l = l - dec.length;
+            num = coeff_array.join('') + new Array(l+1).join(zero);
+        }
+    }
+    
+    return num;
+};
