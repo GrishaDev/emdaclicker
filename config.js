@@ -1,4 +1,9 @@
-export let nums = 
+//Constans
+const INTERVAL_VALUE = 10;
+//---------------
+
+// Arrays of data
+let nums = 
 [
     {
         num: 7,
@@ -16,9 +21,25 @@ export let nums =
         num: 16,
         symbol: "Q"
     },
+    {
+        num: 19,
+        symbol: "QT"
+    },
+    {
+        num: 22,
+        symbol: "SX"
+    },
+    {
+        num: 25,
+        symbol: "SP"
+    },
+    {
+        num: 28,
+        symbol: "OC"
+    },
 ];
 
-export let achs = 
+let achs = 
 [
     {
         name: "Maybe emda soon..",
@@ -70,7 +91,7 @@ export let achs =
     }
 ];   
 
-export let shops = 
+let shops = 
 [
     {
         name: "weekend",
@@ -124,3 +145,4 @@ export let shops =
     }
 ];
 
+//------------------------------------------------------------
