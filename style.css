@@ -10,6 +10,17 @@ p
     z-index: 10;
 }
 
+#dpcvisual
+{
+    position:fixed;
+    bottom: 30%;
+    left: 57%;
+    transition-duration: 0.5s;
+    visibility: hidden;
+}
+
+
+
 .divitem
 {
     width: 100%;

@@ -7,6 +7,26 @@ let dpc = 1;
 let days_waited= "You waited "+days+" days for emda";
 let dayspersec = "Days per second: "+dps;
 
+let nums = 
+[
+    {
+        num: 7,
+        symbol: "M"
+    },
+    {
+        num: 10,
+        symbol: "B"
+    },
+    {
+        num: 13,
+        symbol: "T"
+    },
+    {
+        num: 16,
+        symbol: "Q"
+    },
+]
+
 let achs = 
 [
     {
@@ -163,9 +183,21 @@ function dpser()
 setInterval(dpser, 10);
 function clicka()
 {
-   // console.log("adding by click");
     days+= dpc;
-    document.getElementById("score").innerHTML = "You waited "+Math.round(days)+" days for emda";
+    document.getElementById("score").innerHTML = "You waited "+beautifydays(days)+" days for emda";
+
+    document.getElementById("dpcvisual").style.visibility="visible";
+    document.getElementById("dpcvisual").innerHTML="+"+dpc; 
+    document.getElementById("dpcvisual").style.bottom="50%";
+    document.getElementById("dpcvisual").style.transitionDuration = "0.3s";
+
+
+    setTimeout(function()
+    { 
+        document.getElementById("dpcvisual").style.transitionDuration = "0s"
+        document.getElementById("dpcvisual").style.visibility="hidden";
+        document.getElementById("dpcvisual").style.bottom="30%";
+    }, 300);
 }
 
 function achievements()
@@ -190,9 +222,9 @@ function buya(i)
     {
         console.log("bought");
         days -= shops[i].price;
-        document.getElementById("score").innerHTML = "You waited "+Math.round(days)+" days for emda";
+        document.getElementById("score").innerHTML = "You waited "+beautifydays(days)+" days for emda";
         dps += shops[i].dps;
-        document.getElementById("dps").innerHTML = "Days per second: "+dps;
+        document.getElementById("dps").innerHTML = "Days per second: "+beautifydays(dps);
 
         dpc ++;
         if(dps > 20)
@@ -200,7 +232,7 @@ function buya(i)
             dpc += Math.round(dps/10);
         }
 
-        document.getElementById("dpc").innerHTML = "Days per click: "+dpc;
+        document.getElementById("dpc").innerHTML = "Days per click: "+beautifydays(dpc);
 
         shops[i].price = Math.round(shops[i].price * 1.25);
 
@@ -214,11 +246,54 @@ function buya(i)
 
 function beautifydays(days)
 {
-    let a = Math.round(days);
+    let a = Math.round(days).toString();
+    let b=a.toString();
 
-    // if(a >=  1000000000000)
+    let lenn = nums.length;
+
+    for(let x=0; x<nums.length; x++)
+    {
+        if(a.length >= nums[x].num && a.length <= nums[x].num+2)
+        {
+         //   console.log(a.length);
+            b = calculatedays(nums[x].num-2,a.length,a,x);
+        }
+        else if(a.length >= nums[nums.length-1].num)
+        {
+            b = calculatedays(nums[x].num-2,a.length,a,x);
+        }
+    }
+
+     return b;
+}
+
+function calculatedays(num,len,a,x)
+{
+    b='';
+
+    let offset = num - a.length;
+
+    // for(let j=0;j <4; j++)
     // {
-    //     a = "1T";  
+    //     if
     // }
-     return a;
+    let val=0;
+
+    if(offset == 2)
+        val = 0;
+    else if(offset == 1)
+        val = 1;
+    else
+        val=2;
+
+    for(let i=0; i<4; i++)
+    {
+        if(i==val)
+            b += a[i].toString()+'.';
+        else
+            b += a[i].toString();
+    }
+    b+=nums[x].symbol;
+
+    return b;
 }
