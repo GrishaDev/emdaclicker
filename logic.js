@@ -17,11 +17,50 @@ let dpcelem = document.getElementById("dpc");
 
 //Run the game
 init();
-setInterval(main, INTERVAL_VALUE);
+
 // -------------------
 
 //Methods
 function init() //initialization of stuff
+{
+    setInterval(main, INTERVAL_VALUE);
+    getSave();
+    reloadShops();
+}
+
+function getSave() // Load saved game if any
+{
+    let storageScore =  Number(localStorage.getItem("score"));
+    let storageDps= Number(localStorage.getItem("dps"));
+    let storageDpc = Number(localStorage.getItem("dpc"));
+
+    if(storageScore != undefined && storageDps != undefined && storageDpc != undefined)
+    {
+        days = storageScore;
+        dps = storageDps;
+        dpc = storageDpc;
+
+        if(dpc < 1)
+            dpc = 1;
+    }
+    updateElems();
+}
+
+function setSave() // Save the game
+{
+    localStorage.setItem("score", days.toString());
+    localStorage.setItem("dps", dps.toString());
+    localStorage.setItem("dpc", dpc.toString());
+}
+
+function updateElems() // Update dps, dpc etc
+{
+    score.innerHTML = "You waited "+beautifydays(days)+" days for emda";
+    dpselem.innerHTML = "Days per second: "+beautifydays(dps);
+    dpcelem.innerHTML = "Days per click: "+beautifydays(dpc);
+}
+
+function reloadShops() // Reload available shops
 {
     let shopdiv = document.getElementById("items");
 
@@ -50,7 +89,7 @@ function init() //initialization of stuff
 function main() // Logic, runs every INTERVAL_VALUE seconds.
 {
     days += dps/100;
-    score.innerHTML = "You waited "+beautifydays(days)+" days for emda";
+    updateElems();
 
     for(let i=0; i<shops.length;i++)
     {
@@ -65,8 +104,12 @@ function main() // Logic, runs every INTERVAL_VALUE seconds.
 function clicka() // Executed on emda click.
 {
     days+= dpc;
-    score.innerHTML = "You waited "+beautifydays(days)+" days for emda";
+    updateElems();
+    clickAnimation();
+}
 
+function clickAnimation() // Animation of clicking
+{
     dpcvisual.style.visibility="visible";
     dpcvisual.innerHTML="+"+beautifydays(dpc); 
     dpcvisual.style.bottom="50%";
@@ -98,23 +141,33 @@ function buya(i) // Handles buying upgrade
     if(days >= shops[i].price)
     {
         days -= shops[i].price;
-        score.innerHTML = "You waited "+beautifydays(days)+" days for emda";
         dps += shops[i].dps;
-        dpselem.innerHTML = "Days per second: "+beautifydays(dps);
-
         dpc += Math.ceil(shops[i].dps/10);
 
-        dpcelem.innerHTML = "Days per click: "+beautifydays(dpc);
+        updateElems()
         shops[i].price = Math.round(shops[i].price * 1.25);
 
         let div = document.getElementById("items");
         while (div.firstChild) {
             div.firstChild.remove();
         }
-        init();
+        reloadShops();
+        setSave();
     }
 }
 
+function wipe() // Wipe data
+{
+    let sure = prompt("Are you sure to delete all saved progress? type yes");
+
+    if(sure==="yes")
+    {
+        localStorage.removeItem("score");
+        localStorage.removeItem("dps");
+        localStorage.removeItem("dpc");
+        location.reload();
+    }
+}
 function beautifydays(days) // Formats number(needed for large numbers)
 {
     let daystxt = scientificToDecimal(Math.round(days)).toString();
