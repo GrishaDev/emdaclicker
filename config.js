@@ -23,19 +23,51 @@ let nums =
     },
     {
         num: 19,
-        symbol: "QT"
+        symbol: "A1"
     },
     {
         num: 22,
-        symbol: "SX"
+        symbol: "A2"
     },
     {
         num: 25,
-        symbol: "SP"
+        symbol: "A3"
     },
     {
         num: 28,
-        symbol: "OC"
+        symbol: "A4"
+    },
+    {
+        num: 31,
+        symbol: "A5"
+    },
+    {
+        num: 34,
+        symbol: "A6"
+    },
+    {
+        num: 37,
+        symbol: "A7"
+    },
+    {
+        num: 40,
+        symbol: "A8"
+    },
+    {
+        num: 43,
+        symbol: "A9"
+    },
+    {
+        num: 46,
+        symbol: "A10"
+    },
+    {
+        num: 49,
+        symbol: "A11"
+    },
+    {
+        num: 52,
+        symbol: "A12"
     },
 ];
 
