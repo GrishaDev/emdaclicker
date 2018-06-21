@@ -1,5 +1,6 @@
 //Constans
 const INTERVAL_VALUE = 10;
+const IDCLICK_BONUS = "click"
 //---------------
 
 // Arrays of data
@@ -138,43 +139,99 @@ let shops =
     {
         name: "yom d",
         price: 1000,
-        dps: 20
+        dps: 15
     },
     {
         name: "mega gimelim",
         price: 5000,
-        dps: 100
+        dps: 70
     },
     {
         name: "admama",
         price: 25000,
-        dps: 500
+        dps: 325
     },
     {
         name: "ram2",
         price: 130000,
-        dps: 5000
+        dps: 1500
     },
     {
         name: "keva no emda",
         price: 1000000,
-        dps: 100000
+        dps: 11500
     },
     {
         name: "ezrahut no emda",
         price: 920000100,
-        dps: 100000000
+        dps: 10000000
     },
     {
         name: "never emda?",
         price: 92034526523000100,
-        dps: 10000342520000
+        dps: 400003425200000
     },
     {
         name: "?!",
         price: 9203452652300010898967634754865834534564346575450,
-        dps: 10000342520045646456452343243445656554654600
+        dps: 100003425200456464564523432434456565546546003454353243254643
     }
 ];
+
+
+let clickshops = 
+[
+    {
+        name: "x2",
+        price: 50,
+        dpc: 2
+    },
+    {
+        name: "x2",
+        price: 200,
+        dpc: 2
+    },
+    {
+        name: "x2",
+        price: 1000,
+        dpc: 2
+    },
+    {
+        name: "x2",
+        price: 5000,
+        dpc: 2
+    },
+    {
+        name: "x4",
+        price: 25000,
+        dpc: 4
+    },
+    {
+        name: "x4",
+        price: 130000,
+        dpc: 4
+    },
+    {
+        name: "x4",
+        price: 1000000,
+        dpc: 4
+    },
+    {
+        name: "x8",
+        price: 920000100,
+        dpc: 8
+    },
+    {
+        name: "x16",
+        price: 92034526523000100,
+        dpc: 16
+    },
+    {
+        name: "x256",
+        price: 9203452652300010898967634754865834534564346575450,
+        dpc: 256
+    }
+];
+
 
 //------------------------------------------------------------

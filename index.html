@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Emda clicker</title>
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" href="./assets/ico.png">
 </head>
 <body>
     <div class="all">
@@ -21,7 +22,7 @@
         <div class="main">
             <div class="up">
                 <br>
-                <p id="score"> You waited 0 days for emda </p>
+                <p id="score"  tooltip="My site"> You waited 0 days for emda </p>
                 <p id="dps"> days per second: 0</p>
             </div>
             <p id="dpcvisual">a</p>
@@ -29,11 +30,18 @@
                 <img src="./assets/desk2.png" class="emda" onclick="clicka()">
             </div>
             <div class="botleft">
-                <p id="dpc"> Days per click: 1 </p>
+                <p id="dpc" tooltip="My site"> Days per click: 1 </p>
             </div>
             <div class="botright">
                 <p id="ach"> Good day </p>
                 <input type="button" onclick="wipe()" value="wipe" class="wipebtn">
+            </div>
+            <div class="topright">
+                <p>Click upgrades</p>
+                <hr>
+                <div id="clickitems">
+
+                </div>
             </div>
         </div> 
     </div>

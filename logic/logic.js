@@ -5,6 +5,7 @@
 let days=0;
 let dps = 0;
 let dpc = 1;
+let dpcmult = 1;
 
 let days_waited= "You waited "+days+" days for emda";
 let dayspersec = "Days per second: "+dps;
@@ -26,6 +27,7 @@ function init() //initialization of stuff
     setInterval(main, INTERVAL_VALUE);
     getSave();
     reloadShops();
+    reloadClickShops();
 }
 
 function getSave() // Load saved game if any
@@ -57,7 +59,7 @@ function updateElems() // Update dps, dpc etc
 {
     score.innerHTML = "You waited "+beautifydays(days)+" days for emda";
     dpselem.innerHTML = "Days per second: "+beautifydays(dps);
-    dpcelem.innerHTML = "Days per click: "+beautifydays(dpc);
+    dpcelem.innerHTML = "Days per click: "+beautifydays(dpc*dpcmult);
 }
 
 function reloadShops() // Reload available shops
@@ -86,6 +88,34 @@ function reloadShops() // Reload available shops
     }
 }
 
+function reloadClickShops() // Reload click upgrades
+{
+    let shopdiv = document.getElementById("clickitems");
+    console.log("am i here");
+    for(let i=0; i<clickshops.length;i++)
+    {
+        let newdiv = document.createElement("div");
+        newdiv.classList.add('divclickitem');
+
+        newdiv.setAttribute("tooltip","Multiply your days per click!\nPrice: "+clickshops[i].price);
+        let btn = document.createElement("INPUT");
+        btn.setAttribute("type", "button");
+        btn.disabled = true;
+        btn.setAttribute("id", IDCLICK_BONUS+i);
+        btn.setAttribute("value", clickshops[i].name);
+
+        btn.classList.add("item");
+        btn.onclick = function() {clickbuya(i) };
+
+        // let span = document.createElement("span");
+        // span.classList.add("tooltiptext");
+        // span.setAttribute("value",clickshops[i].price);
+
+        //newdiv.appendChild(span);
+        newdiv.appendChild(btn);
+        shopdiv.appendChild(newdiv);
+    }
+}
 function main() // Logic, runs every INTERVAL_VALUE seconds.
 {
     days += dps/100;
@@ -98,12 +128,19 @@ function main() // Logic, runs every INTERVAL_VALUE seconds.
             document.getElementById(i).disabled = false;
         }
     }
+    for(let i=0; i<clickshops.length;i++)
+    {
+        if(days >= clickshops[i].price)
+        {
+            document.getElementById(IDCLICK_BONUS+i).disabled = false;
+        }
+    }
     achievements();
 }
 
 function clicka() // Executed on emda click.
 {
-    days+= dpc;
+    days+= dpc*dpcmult;
     updateElems();
     clickAnimation();
 }
@@ -152,6 +189,30 @@ function buya(i) // Handles buying upgrade
             div.firstChild.remove();
         }
         reloadShops();
+        setSave();
+    }
+}
+
+function clickbuya(i) // Handles buying upgrade
+{
+    if(days >= clickshops[i].price)
+    {
+        days -= clickshops[i].price;
+        dpcmult *= clickshops[i].dpc
+
+        updateElems()
+
+        clickshops.splice(i,1);
+        // let div = document.getElementById(IDCLICK_BONUS+i);
+        // console.log(div);
+        // div.remove();
+
+        let div = document.getElementById("clickitems");
+        while (div.firstChild)
+        {
+            div.firstChild.remove();
+        }
+        reloadClickShops();
         setSave();
     }
 }
