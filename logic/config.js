@@ -132,42 +132,42 @@ let shops =
         dps: 1
     },
     {
-        name: "gimel",
+        name: "month",
         price: 200,
         dps: 4
     },
     {
-        name: "yom d",
+        name: "year",
         price: 1000,
         dps: 15
     },
     {
-        name: "mega gimelim",
+        name: "bronze time bringer",
         price: 5000,
         dps: 70
     },
     {
-        name: "admama",
+        name: "silver time bringer",
         price: 25000,
         dps: 325
     },
     {
-        name: "ram2",
+        name: "gold timer bringer",
         price: 130000,
         dps: 1500
     },
     {
-        name: "keva no emda",
+        name: "time swap",
         price: 1000000,
         dps: 11500
     },
     {
-        name: "ezrahut no emda",
+        name: "time multiplier",
         price: 920000100,
         dps: 10000000
     },
     {
-        name: "never emda?",
+        name: "time machine",
         price: 92034526523000100,
         dps: 400003425200000
     },

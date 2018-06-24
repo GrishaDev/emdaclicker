@@ -35,12 +35,19 @@ function getSave() // Load saved game if any
     let storageScore =  Number(localStorage.getItem("score"));
     let storageDps= Number(localStorage.getItem("dps"));
     let storageDpc = Number(localStorage.getItem("dpc"));
+    let storageDpcMult = Number(localStorage.getItem("dpcmult"));
+    let storageShops = JSON.parse(localStorage.getItem("shops"));
+    let storageClickShops = JSON.parse(localStorage.getItem("clickshops"));
 
-    if(storageScore != undefined && storageDps != undefined && storageDpc != undefined)
+    if(storageScore != undefined && storageDps != undefined && storageDpc != undefined
+      && storageDpcMult!=undefined && storageShops!=undefined && storageClickShops!=undefined)
     {
         days = storageScore;
         dps = storageDps;
         dpc = storageDpc;
+        dpcmult = storageDpcMult;
+        shops = storageShops;
+        clickshops = storageClickShops;
 
         if(dpc < 1)
             dpc = 1;
@@ -53,6 +60,9 @@ function setSave() // Save the game
     localStorage.setItem("score", days.toString());
     localStorage.setItem("dps", dps.toString());
     localStorage.setItem("dpc", dpc.toString());
+    localStorage.setItem("dpcmult", dpcmult.toString());
+    localStorage.setItem("shops", JSON.stringify(shops));
+    localStorage.setItem("clickshops", JSON.stringify(clickshops));
 }
 
 function updateElems() // Update dps, dpc etc
@@ -125,14 +135,24 @@ function main() // Logic, runs every INTERVAL_VALUE seconds.
     {
         if(days >= shops[i].price)
         {
+            //console.log("SHOPS:: "+days+" is bigger than "+shops[i].price);
             document.getElementById(i).disabled = false;
+        }
+        else
+        {
+            document.getElementById(i).disabled = true;
         }
     }
     for(let i=0; i<clickshops.length;i++)
     {
         if(days >= clickshops[i].price)
         {
+            //console.log("click SHOPS:: "+days+" is bigger than "+clickshops[i].price);
             document.getElementById(IDCLICK_BONUS+i).disabled = false;
+        }
+        else
+        {
+            document.getElementById(IDCLICK_BONUS+i).disabled = true;
         }
     }
     achievements();
@@ -148,7 +168,7 @@ function clicka() // Executed on emda click.
 function clickAnimation() // Animation of clicking
 {
     dpcvisual.style.visibility="visible";
-    dpcvisual.innerHTML="+"+beautifydays(dpc); 
+    dpcvisual.innerHTML="+"+beautifydays(dpc*dpcmult); 
     dpcvisual.style.bottom="50%";
     dpcvisual.style.transitionDuration = "0.3s";
 
@@ -226,6 +246,9 @@ function wipe() // Wipe data
         localStorage.removeItem("score");
         localStorage.removeItem("dps");
         localStorage.removeItem("dpc");
+        localStorage.removeItem("dpcmult");
+        localStorage.removeItem("shops");
+        localStorage.removeItem("clickshops");
         location.reload();
     }
 }

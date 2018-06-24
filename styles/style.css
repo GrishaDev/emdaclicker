@@ -44,8 +44,6 @@ p
     height: 15%;
 }
 
-
-
 .wipebtn
 {
     right: 0;
@@ -117,10 +115,12 @@ p
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 100%;
+    height: 80%;
     width: 20%;
     background-color:lightgray;
     text-align: center;
+    box-shadow: 0 10px 6px -6px #777;
+    overflow-y: auto;
 }
 
 .main
@@ -201,9 +201,11 @@ p
     height: 25%;
     width: 25%;
     left: 75%;
-    background-color:lightcyan;
+    background-color:lightgray;
     text-align: center;
     top: 0px;
+    min-height: 250px;
+    box-shadow: 0 10px 6px -6px #777;
 }
 /* .emdadiv
 {
@@ -222,11 +224,11 @@ img{
      margin-left: 130px; */
 
      border-radius: 5px; 
-     background-color: #00FF00;
+     background-color: rgb(72, 94, 61);
      color: #111;
      padding: 1px 5px 2px 5px;
-     margin-bottom: 10%;
-     margin-right: 50px;
+     margin-bottom: 200px;
+     margin-right: 20px;
      /* white-space: nowrap; */
      box-shadow: 1px 1px 3px #222222;
      z-index: 1000;
