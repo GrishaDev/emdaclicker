@@ -60,6 +60,18 @@ p
     display: inline-block;
     font-size: 16px;
 }
+
+#items
+{
+    overflow-y: auto;
+    max-height: 80%;
+    
+}
+
+#bought
+{
+
+}
 .item
 {
     width: 100%;
@@ -115,12 +127,11 @@ p
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 80%;
+    height: 70%;
     width: 20%;
     background-color:lightgray;
     text-align: center;
     box-shadow: 0 10px 6px -6px #777;
-    overflow-y: auto;
 }
 
 .main
@@ -225,9 +236,9 @@ img{
 
      border-radius: 5px; 
      background-color: rgb(72, 94, 61);
-     color: #111;
+     color: white;
      padding: 1px 5px 2px 5px;
-     margin-bottom: 200px;
+     margin-bottom: 10%;
      margin-right: 20px;
      /* white-space: nowrap; */
      box-shadow: 1px 1px 3px #222222;
